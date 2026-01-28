@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Azure Palms Resort | Guest Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Landing Screen -->
+    <section id="landing-screen">
+        <div class="fade-in">
+            <img src="logo.png" alt="Resort Logo" class="resort-logo">
+            <h2 style="margin-bottom: 30px; letter-spacing: 2px;">WELCOME TO PARADISE</h2>
+            <div id="qrcode" class="qr-container" onclick="openDashboard()">
+                <!-- QR will be generated here by script.js -->
+            </div>
+            <p style="color: var(--accent);">Scan to enter Guest Dashboard</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">(Click QR to bypass for demo)</p>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <main id="dashboard">
+        <header class="fade-in">
+            <img src="logo.png" id="main-logo" alt="The Azure Palms Logo" class="resort-logo">
+            <h1>The Azure Palms Resort</h1>
+            <p class="welcome-text">"Where serenity meets luxury. Breathe in, chill out."</p>
+        </header>
+
+        <div class="menu-grid">
+            <div class="menu-item" onclick="openDetail('checkin', 'Digital Check-In', 'fa-id-card')">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-id-card"></i>
+                <span>Check-In</span>
+                <p>Digital arrival & ID verification</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('rules', 'Rules & Regulations', 'fa-clipboard-list')">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Rules</span>
+                <p>Resort policies & guidelines</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('about', 'About Resort', 'fa-hotel')">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-hotel"></i>
+                <span>About</span>
+                <p>Our story & contact info</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('essentials', 'Online Essentials', 'fa-wifi')">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-wifi"></i>
+                <span>Essentials</span>
+                <p>Wi-Fi & access codes</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('appliances', 'Appliances', 'fa-tools')">
+                <img src="https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-tools"></i>
+                <span>Appliances</span>
+                <p>TV, AC & Geyser guides</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('nearby', 'Nearby', 'fa-map-marked-alt')">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Nearby</span>
+                <p>Beaches & local markets</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('dining', 'Dining & Emergency', 'fa-utensils')">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-utensils"></i>
+                <span>Dining</span>
+                <p>Best cafes & menus</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('amenities', 'Resort Amenities', 'fa-swimming-pool')">
+                <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-swimming-pool"></i>
+                <span>Amenities</span>
+                <p>Pool, Gym & Spa</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('gallery', 'Photo Gallery', 'fa-images')">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+                <p>Beautiful resort views</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('reviews', 'Guest Reviews', 'fa-star')">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+                <p>What our guests say</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('weather', 'Live Weather', 'fa-cloud-sun')">
+                <img src="https://images.unsplash.com/photo-1592210633469-a1576d139266?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-cloud-sun"></i>
+                <span>Weather</span>
+                <p>Current resort forecast</p>
+            </div>
+            <div class="menu-item" onclick="openDetail('transport', 'Transport', 'fa-taxi')">
+                <img src="https://images.unsplash.com/photo-1549461756-8a1835a2f8d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=40"
+                    class="menu-bg" loading="lazy" decoding="async">
+                <i class="fas fa-taxi"></i>
+                <span>Transport</span>
+                <p>Taxi & bike rentals</p>
+            </div>
+        </div>
+
+        <!-- Hidden Sections for Detail View -->
+        <div id="sections-repository" style="display: none;">
+            <!-- Digital Check-In -->
+            <section id="sec-checkin" class="content-box">
+                <div id="checkin-initial" style="display: flex; flex-direction: column; gap: 15px;">
+                    <p>Skip the reception desk. Check-in securely and upload your ID for verification.</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button class="btn-primary" onclick="startCheckInProcess()">Start Check-In</button>
+                        <div id="id-upload-area"
+                            style="display: none; flex-direction: column; gap: 15px; padding-top: 15px; border-top: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.9rem; color: var(--accent);">Please upload a valid Govt. ID
+                                (Aadhaar/Passport)</p>
+                            <label for="id-file-input" class="btn-primary"
+                                style="display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.1); border: 1px dashed var(--accent);">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload ID Proof
+                            </label>
+                            <input type="file" id="id-file-input" style="display: none;"
+                                onchange="handleIdUpload(this)">
+                            <div id="upload-status"
+                                style="font-size: 0.8rem; text-align: center; color: var(--text-muted);"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rules -->
+            <section id="sec-rules" class="content-box">
+                <ul class="rules-list">
+                    <li class="rule-item">No Smoking Indoors</li>
+                    <li class="rule-item">No Parties or Events</li>
+                    <li class="rule-item">Lock All Doors & Windows</li>
+                    <li class="rule-item">No Unregistered Guests</li>
+                    <li class="rule-item">Switch Off Lights/AC/Geysers</li>
+                    <li class="rule-item">Strict "No Drugs" Policy</li>
+                    <li class="rule-item">Valid ID Required (Aadhaar/Passport)</li>
+                </ul>
+            </section>
+
+            <!-- About -->
+            <section id="sec-about" class="content-box">
+                <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">The Azure Palms Boutique Resort</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Address</span>
+                    <span class="info-value">123 Serenity Lane, Coastal Haven, Goa</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">WhatsApp Support</span>
+                    <span class="info-value">+91 98765 43210</span>
+                </div>
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;">Contact Manager</button>
+            </section>
+
+            <!-- Online Essentials -->
+            <section id="sec-essentials" class="content-box">
+                <div class="info-item">
+                    <span class="info-label">Wi-Fi Network</span>
+                    <span class="info-value">AzurePalms_Guest_HighSpeed</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Wi-Fi Password</span>
+                    <span class="info-value">BreatheIn2025</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Main Entrance Pin</span>
+                    <span class="info-value">1234 (Press # after)</span>
+                </div>
+            </section>
+
+            <!-- Appliances -->
+            <section id="sec-appliances" class="content-box">
+                <div class="appliance-tabs">
+                    <div class="appliance-tab active" onclick="showAppliance('geyser')">Geyser</div>
+                    <div class="appliance-tab" onclick="showAppliance('ac')">AC</div>
+                    <div class="appliance-tab" onclick="showAppliance('tv')">TV</div>
+                </div>
+                <div id="appliance-content">
+                    <div id="appliance-info" class="app-detail fade-in">
+                        <h4 id="app-title" style="color: var(--accent); margin-bottom: 15px;">Proper Geyser Operation
+                        </h4>
+                        <div id="app-steps" style="margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">
+                            <!-- Steps will be injected here -->
+                        </div>
+                        <div class="video-container"
+                            style="position: relative; padding-top: 177.77%; background: #000; border-radius: 12px; border: 1px solid var(--accent); overflow: hidden;">
+                            <iframe id="app-video-frame" src=""
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nearby -->
+            <section id="sec-nearby" class="content-box">
+                <div class="rec-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                        class="rec-img">
+                    <div class="rec-info">
+                        <h4>Azure Cove Beach</h4>
+                        <p style="font-size: 0.85rem;">Pristine white sands located just 5 mins away. Perfect for
+                            sunsets.</p>
+                        <span style="font-size: 0.7rem; color: var(--accent);"><i class="fas fa-walking"></i> 5m
+                            walk</span>
+                    </div>
+                </div>
+                <div class="rec-card">
+                    <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                        class="rec-img">
+                    <div class="rec-info">
+                        <h4>Midnight Market</h4>
+                        <p style="font-size: 0.85rem;">Street food, local crafts, open every Friday night.</p>
+                        <span style="font-size: 0.7rem; color: var(--accent);"><i class="fas fa-car"></i> 10m
+                            drive</span>
+                    </div>
+                </div>
+                <div class="rec-card">
+                    <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                        class="rec-img">
+                    <div class="rec-info">
+                        <h4>Ancient Lighthouse</h4>
+                        <p style="font-size: 0.85rem;">Panoramic views of the coastline. Great for photography.</p>
+                        <span style="font-size: 0.7rem; color: var(--accent);"><i class="fas fa-car"></i> 15m
+                            drive</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section id="sec-gallery" class="content-box">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60"
+                        style="width: 100%; border-radius: 10px;">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60"
+                        style="width: 100%; border-radius: 10px;">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60"
+                        style="width: 100%; border-radius: 10px;">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60"
+                        style="width: 100%; border-radius: 10px;">
+                </div>
+            </section>
+
+            <!-- Dining -->
+            <section id="sec-dining" class="content-box">
+                <h4 style="color: var(--accent); margin-bottom: 15px;">Top Cafes</h4>
+                <ul>
+                    <li style="margin-bottom: 8px;">🍴 The Salted Rim - Mediterranean & Cocktails</li>
+                    <li style="margin-bottom: 8px;">☕ Brew & Byte Cafe - Best Artisan Coffee</li>
+                    <li style="margin-bottom: 8px;">🍰 Tropical Bites - Local Sweets & Snacks</li>
+                </ul>
+                <h4 style="color: var(--accent); margin-top: 20px; margin-bottom: 15px;">Emergency</h4>
+                <div class="emergency-list">
+                    <div class="emergency-btn">Hospital: 0832-112233</div>
+                    <div class="emergency-btn">Police: 100</div>
+                </div>
+            </section>
+
+            <!-- Amenities -->
+            <section id="sec-amenities" class="content-box">
+                <div class="info-item">
+                    <span class="info-label">Infinity Pool</span>
+                    <span class="info-value">Open 7 AM - 9 PM. Proper swimwear required.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Gym & Spa</span>
+                    <span class="info-value">Located on Ground Floor. Book spa sessions via WhatsApp.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Private Library</span>
+                    <span class="info-value">24/7 access for guests. Please maintain silence.</span>
+                </div>
+            </section>
+
+            <!-- Reviews -->
+            <section id="sec-reviews" class="content-box">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--accent);">Exceptional 4.9/5</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">Based on 120+ guest experiences</p>
+                </div>
+                <div class="review-item" style="border-bottom: 1px solid var(--glass-border); padding: 10px 0;">
+                    <p style="font-style: italic; font-size: 0.9rem;">"Amazing hospitality and stunning views. The
+                        digital check-in was so smooth!"</p>
+                    <span style="font-size: 0.75rem; color: var(--accent);">— Rahul M., Jan 2026</span>
+                </div>
+                <div class="review-item" style="border-bottom: 1px solid var(--glass-border); padding: 10px 0;">
+                    <p style="font-style: italic; font-size: 0.9rem;">"The infinity pool at sunset is a dream. Highly
+                        recommended for couples."</p>
+                    <span style="font-size: 0.75rem; color: var(--accent);">— Sarah L., Dec 2025</span>
+                </div>
+            </section>
+
+            <!-- Weather -->
+            <section id="sec-weather" class="content-box">
+                <div style="text-align: center; padding: 20px 0;">
+                    <i class="fas fa-sun" style="font-size: 3rem; color: #ffcc00; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2rem;">28°C</h3>
+                    <p style="text-transform: uppercase; letter-spacing: 2px;">Sunny & Clear</p>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 20px; font-size: 0.8rem;">
+                    <div><i class="fas fa-wind"></i> 12 km/h</div>
+                    <div><i class="fas fa-tint"></i> 65%</div>
+                    <div><i class="fas fa-umbrella"></i> 0%</div>
+                </div>
+            </section>
+
+            <!-- Transport -->
+            <section id="sec-transport" class="content-box">
+                <div class="rec-card">
+                    <div class="rec-info">
+                        <h4>Azure Resort Taxi</h4>
+                        <p style="font-size: 0.85rem;">Dedicated shuttle service to airport and city center.</p>
+                        <button class="btn-primary" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Call
+                            Driver</button>
+                    </div>
+                </div>
+                <div class="rec-card">
+                    <div class="rec-info">
+                        <h4>Bike & Scooty Rental</h4>
+                        <p style="font-size: 0.85rem;">Explore the coast at your own pace. Rentals from ₹400/day.</p>
+                        <button class="btn-primary"
+                            style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Check Availability</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Detail View Overlay -->
+    <div id="detail-overlay">
+        <header class="overlay-header">
+            <button class="back-btn" onclick="closeDetail()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div>
+                <i id="overlay-icon" class="fas fa-id-card" style="color: var(--accent); font-size: 1.2rem;"></i>
+                <span id="overlay-title" class="overlay-title">Digital Check-In</span>
+            </div>
+        </header>
+        <div id="detail-content">
+            <!-- Content from Repository injected here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
