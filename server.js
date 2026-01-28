@@ -39,3 +39,5 @@ app.listen(PORT, () => {
     console.log(`📱 Scan the QR code on the landing page with your phone!`);
     console.log(`-------------------------------------------------`);
 });
+
+module.exports = app;
