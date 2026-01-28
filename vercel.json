@@ -12,8 +12,7 @@
             "dest": "server.js"
         },
         {
-            "src": "/(.*).(js|css|png|jpg|jpeg|svg|mp4)",
-            "dest": "/$1.$2"
+            "handle": "filesystem"
         },
         {
             "src": "/(.*)",
