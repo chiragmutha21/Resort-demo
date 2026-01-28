@@ -1,43 +1,27 @@
 const express = require('express');
-const qrcode = require('qrcode');
 const cors = require('cors');
 const path = require('path');
-const os = require('os');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, './')));
 
-// Function to get Local IP Address
-function getLocalIp() {
-    const interfaces = os.networkInterfaces();
-    for (const devName in interfaces) {
-        const iface = interfaces[devName];
-        for (let i = 0; i < iface.length; i++) {
-            const alias = iface[i];
-            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
-                return alias.address;
-            }
-        }
-    }
-    return 'localhost';
-}
-
-const LOCAL_IP = getLocalIp();
-const SERVER_URL = `http://${LOCAL_IP}:${PORT}`;
-
-// Endpoint to get QR URL
+// Endpoint to get QR URL - Dynamic for any environment (Vercel, Local, etc.)
 app.get('/api/get-qr', (req, res) => {
+    const protocol = req.headers['x-forwarded-proto'] || 'http';
+    const host = req.headers.host;
+    const SERVER_URL = `${protocol}://${host}?mode=dashboard`;
     res.json({ url: SERVER_URL });
 });
 
-app.listen(PORT, () => {
-    console.log(`-------------------------------------------------`);
-    console.log(`🚀 Resort Server running at: ${SERVER_URL}`);
-    console.log(`📱 Scan the QR code on the landing page with your phone!`);
-    console.log(`-------------------------------------------------`);
-});
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+}
 
 module.exports = app;
+

@@ -6,17 +6,11 @@
             "use": "@vercel/node"
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/api/(.*)",
-            "dest": "server.js"
-        },
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "index.html"
+            "source": "/api/(.*)",
+            "destination": "server.js"
         }
-    ]
+    ],
+    "cleanUrls": true
 }
